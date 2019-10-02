@@ -26,12 +26,12 @@ word = ''
 buttons = []
 guessed = []
 hangmanPics = [pygame.image.load('hangman0.png'), pygame.image.load('hangman1.png'), pygame.image.load('hangman2.png'), pygame.image.load(
-    'hangman3.png'), pygame.image.load('hangman4.png'), pygame.image.load('hangman5.png'), pygame.image.load('hangman6.png')]
+    'hangman3.png'), pygame.image.load('hangman4.png'), pygame.image.load('hangman5.png'), pygame.image.load('hangman6.png')]  #Load picture assets into an array
 
 limbs = 0
 
 
-def redraw_game_window():
+def redraw_game_window(): #Updating the game display
     global guessed
     global hangmanPics
     global limbs
@@ -59,7 +59,7 @@ def redraw_game_window():
     pygame.display.update()
 
 
-def randomWord():
+def randomWord(): #Querying a random word for the questions
     file = open('words.txt')
     f = file.readlines()
     i = random.randrange(0, len(f) - 1)
@@ -67,7 +67,7 @@ def randomWord():
     return f[i][:-1]
 
 
-def hang(guess):
+def hang(guess): #Checking for the guessed character
     global word
     if guess.lower() not in word.lower():
         return True
@@ -75,7 +75,7 @@ def hang(guess):
         return False
 
 
-def spacedOut(word, guessed=[]):
+def spacedOut(word, guessed=[]): #Current state of the word
     spacedWord = ''
     guessedLetters = guessed
     for x in range(len(word)):
@@ -90,7 +90,7 @@ def spacedOut(word, guessed=[]):
     return spacedWord
 
 
-def buttonHit(x, y):
+def buttonHit(x, y): #Outputting character chosen
     for i in range(len(buttons)):
         if x < buttons[i][1] + 20 and x > buttons[i][1] - 20:
             if y < buttons[i][2] + 20 and y > buttons[i][2] - 20:
@@ -98,7 +98,7 @@ def buttonHit(x, y):
     return None
 
 
-def end(winner=False):
+def end(winner=False): #Endgame content
     global limbs
     lostTxt = 'You Lost, press any key to play again...'
     winTxt = 'WINNER!, press any key to play again...'
@@ -128,7 +128,7 @@ def end(winner=False):
     reset()
 
 
-def reset():
+def reset(): #Resetting the game
     global limbs
     global guessed
     global buttons
