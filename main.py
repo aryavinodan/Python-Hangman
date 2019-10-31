@@ -100,7 +100,7 @@ def buttonHit(x, y): #Outputting character chosen
 
 def end(winner=False): #Endgame content
     global limbs
-    lostTxt = 'You Lost, press any key to play again...'
+    lostTxt = 'You LOST, press any key to play again...'
     winTxt = 'WINNER!, press any key to play again...'
     redraw_game_window()
     pygame.time.delay(1000)
